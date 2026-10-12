@@ -1,0 +1,17 @@
+{
+  "name": "pas",
+  "version": "1.0.0",
+  "description": "PC-side scripts for the Pas Android app: a Claude-powered coach that writes messages, answers chat and publishes app updates.",
+  "scripts": {
+    "send": "node send.mjs",
+    "chat": "node chat.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "type": "module",
+  "private": true
+}

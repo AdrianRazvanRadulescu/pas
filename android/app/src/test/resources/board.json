@@ -1,0 +1,578 @@
+{
+  "upcoming": [
+    {
+      "date": "2026-11-07",
+      "title": "Landing page live"
+    },
+    {
+      "date": "2027-01-15",
+      "title": "First 10 beta users"
+    }
+  ],
+  "blockers": [
+    "Pick a domain name for the landing page",
+    "Send the invoice to the accountant"
+  ],
+  "cards": [],
+  "digests": [
+    {
+      "id": "2026-10-08",
+      "title": "AI digest: 2026-10-01 to 2026-10-08",
+      "summary": [
+        {
+          "text": "Agents that run for hours are the main story this week; reliability and permissions matter more than prompts.",
+          "url": "https://example.com/reading/agents-summary"
+        },
+        {
+          "text": "A new paper trains small models to check their own reasoning steps, with solid gains on math sets.",
+          "url": "https://example.com/reading/verifier-summary"
+        },
+        {
+          "text": "Interpretability work shows that individual internal features can steer tone and behavior.",
+          "url": "https://example.com/reading/features-summary"
+        },
+        {
+          "text": "An open-weights reasoning model narrows the gap with closed models.",
+          "url": "https://example.com/reading/open-weights-summary"
+        },
+        {
+          "text": "Draft rules for high-risk systems open for public comment.",
+          "url": "https://example.com/reading/policy-summary"
+        }
+      ],
+      "reading": [
+        {
+          "text": "Small models that check their own reasoning: the paper on step-level verifiers.",
+          "url": "https://example.com/reading/verifier"
+        },
+        {
+          "text": "Steering a language model with sparse autoencoder features: a hands-on write-up.",
+          "url": "https://example.com/reading/features"
+        },
+        {
+          "text": "Long-context recall in the middle of the prompt: the study and its data.",
+          "url": "https://example.com/reading/long-context"
+        },
+        {
+          "text": "A practical guide to permissions for coding agents.",
+          "url": "https://example.com/reading/permissions"
+        }
+      ],
+      "watch": [
+        {
+          "text": "Independent benchmarks for the new mid-size model.",
+          "url": "https://example.com/reading/watch-benchmarks"
+        },
+        {
+          "text": "The comment period for the draft rules closes in eight weeks.",
+          "url": "https://example.com/reading/watch-comments"
+        },
+        {
+          "text": "Whether more providers follow the inference price cuts.",
+          "url": "https://example.com/reading/watch-prices"
+        }
+      ],
+      "stories": [
+        {
+          "id": "2026-10-08-1",
+          "section": "Context",
+          "topic": null,
+          "title": "Agents are moving from demos to daily tools",
+          "intro": "Over the past month, several vendors shipped agents that run for hours without a person watching each step.",
+          "url": "https://example.com/2026-10-08/1",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "The common pattern is a loop: the model plans, calls a tool, reads the result and decides what to do next. What changed this quarter is reliability, not the loop itself."
+            },
+            {
+              "label": "Why it matters",
+              "text": "If you build on top of agents, the hard problems are now logging, permissions and cost limits, not the prompt."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-2",
+          "section": "Context",
+          "topic": null,
+          "title": "Evaluation is getting harder than training",
+          "intro": "Benchmarks saturate within months, so labs are writing evaluations that look like real work.",
+          "url": "https://example.com/2026-10-08/2",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "A good evaluation needs realistic tasks, a clear way to score them and protection against the model having seen the answers."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Treat any single benchmark number as a hint, and prefer evaluations built from your own tasks."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-3",
+          "section": "Research",
+          "topic": "New research",
+          "title": "Small models can learn to check their own reasoning",
+          "intro": "A new paper trains a compact model to verify each step of its chain of thought before answering.",
+          "url": "https://example.com/2026-10-08/3",
+          "coreRank": 1,
+          "readMinutes": 5,
+          "parts": [
+            {
+              "label": "The question",
+              "text": "Can a small model catch its own mistakes without a larger model acting as a judge?"
+            },
+            {
+              "label": "Method",
+              "text": "The authors train a verifier head on top of the same network. For every reasoning step it predicts whether the step follows from the previous ones, and low-confidence answers are regenerated."
+            },
+            {
+              "label": "Result",
+              "text": "On grade-school and competition math sets, accuracy rises by several points compared with plain sampling, at roughly twice the inference cost."
+            },
+            {
+              "label": "Limits",
+              "text": "The gains shrink on problems far from the training distribution, and the verifier can be fooled by fluent but wrong steps."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Cheap self-checking could make small on-device models far more useful for multi-step tasks."
+            },
+            {
+              "label": "The technical part",
+              "text": "The verifier shares the transformer trunk and adds a linear head per step boundary. Training uses step-level labels produced by comparing sampled solutions against a known final answer: steps that only appear in wrong solutions get a negative label. At inference the answer is accepted when the minimum step score passes a threshold; otherwise the model resamples up to four times."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-4",
+          "section": "Research",
+          "topic": "New research",
+          "title": "Interpretability tools find features that track user intent",
+          "intro": "A research group maps internal features of a language model to concepts like politeness, urgency and uncertainty.",
+          "url": "https://example.com/2026-10-08/4",
+          "coreRank": 2,
+          "readMinutes": 5,
+          "parts": [
+            {
+              "label": "The question",
+              "text": "Which internal directions in the model actually change its behavior when we turn them up or down?"
+            },
+            {
+              "label": "Method",
+              "text": "They train a sparse autoencoder on one middle layer and then steer the model by adding or removing individual features while it writes."
+            },
+            {
+              "label": "Result",
+              "text": "A handful of features reliably change tone, and a few change whether the model asks a clarifying question."
+            },
+            {
+              "label": "Limits",
+              "text": "Most features are hard to name, and steering one feature often shifts others in ways nobody predicted."
+            },
+            {
+              "label": "Why it matters",
+              "text": "It is a first step toward changing model behavior in a targeted way instead of retraining it."
+            },
+            {
+              "label": "The technical part",
+              "text": "A sparse autoencoder learns a wide dictionary of directions so that each activation vector is a sparse combination of them. Steering adds a scaled copy of one dictionary direction to the residual stream at that layer. The reported effects are measured by comparing outputs with and without the added direction on the same prompts."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-5",
+          "section": "Research",
+          "topic": "New research",
+          "title": "Why long-context models still miss facts in the middle",
+          "intro": "A study shows accuracy dropping for facts placed in the middle of very long prompts.",
+          "url": "https://example.com/2026-10-08/5",
+          "coreRank": null,
+          "readMinutes": 3,
+          "parts": [
+            {
+              "label": "The question",
+              "text": "Do models use all of a long prompt equally?"
+            },
+            {
+              "label": "Method",
+              "text": "The authors hide one fact at different positions in documents of up to one million tokens and ask about it."
+            },
+            {
+              "label": "Result",
+              "text": "Recall is best at the start and end and dips in the middle, even for models marketed as fully long-context."
+            },
+            {
+              "label": "Limits",
+              "text": "The test uses synthetic documents, so real documents may behave differently."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Put the most important instructions at the start or the end of a long prompt."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-6",
+          "section": "Research",
+          "topic": "Opinions",
+          "title": "A public safety checklist for model releases",
+          "intro": "Three labs published a shared checklist covering misuse testing, red-team access and incident reporting.",
+          "url": "https://example.com/2026-10-08/6",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "The checklist is voluntary and short on numbers, but it gives outsiders a concrete list of questions to ask before a release."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Shared vocabulary makes it easier to compare releases and to spot what a release notes page leaves out."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-7",
+          "section": "Models",
+          "topic": "Launches",
+          "title": "Northwind releases a faster mid-size model",
+          "intro": "The new model targets coding and tool use, with a larger context window and lower prices than its predecessor.",
+          "url": "https://example.com/2026-10-08/7",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "Early user reports mention fewer dropped tool calls and better handling of long files. Independent benchmarks are still coming in."
+            },
+            {
+              "label": "Why it matters",
+              "text": "A cheaper mid-size model changes which tasks are worth automating."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-8",
+          "section": "Models",
+          "topic": "Launches",
+          "title": "An open-weights model closes the gap on reasoning tasks",
+          "intro": "A research collective released a model that scores close to the leading closed models on reasoning sets.",
+          "url": "https://example.com/2026-10-08/8",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "The weights come with a permissive license and a detailed training report, which makes it easy to fine-tune for narrow jobs."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Teams that cannot send data to a hosted API now have a stronger option."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-9",
+          "section": "Models",
+          "topic": "Techniques",
+          "title": "Speech models learn to keep up with interruptions",
+          "intro": "A voice model can now stop mid-sentence when the user interrupts and resume naturally.",
+          "url": "https://example.com/2026-10-08/9",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "The trick is training on overlapping conversations rather than clean turn-taking."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Interruption handling is what makes voice assistants feel less like a phone menu."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-10",
+          "section": "Agents",
+          "topic": null,
+          "title": "A coding agent now opens pull requests on its own",
+          "intro": "The tool watches an issue tracker, writes a fix, runs the tests and opens a pull request for review.",
+          "url": "https://example.com/2026-10-08/10",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "Teams report that small, well-described issues work well, while vague tickets still need a human to clarify them."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Writing a clear issue is becoming a skill that pays off twice: for people and for agents."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-11",
+          "section": "Agents",
+          "topic": null,
+          "title": "Why permission prompts are the real agent bottleneck",
+          "intro": "Developers say agents spend more time waiting for approvals than thinking.",
+          "url": "https://example.com/2026-10-08/11",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "Better defaults, like allowing read-only commands and asking only for writes, remove most of the friction without removing control."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Good permission design is a product feature, not only a safety feature."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-12",
+          "section": "Policy",
+          "topic": null,
+          "title": "Regulators publish draft rules for high-risk AI systems",
+          "intro": "A draft guidance document asks providers to document training data sources and test results.",
+          "url": "https://example.com/2026-10-08/12",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "The text is open for comments for eight weeks. Smaller companies are asking for lighter requirements."
+            },
+            {
+              "label": "Why it matters",
+              "text": "If you ship AI features in a regulated area, start keeping simple records of what you test now."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-13",
+          "section": "Policy",
+          "topic": null,
+          "title": "A national institute proposes a testing program for frontier models",
+          "intro": "The proposal lets approved outside groups test models before release.",
+          "url": "https://example.com/2026-10-08/13",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "Details on access and confidentiality are still open, and labs disagree on how much time testers should get."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Outside testing before release is becoming a normal expectation."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-14",
+          "section": "Industry",
+          "topic": null,
+          "title": "Cloud providers cut prices for inference",
+          "intro": "Two large providers announced lower prices for running models, citing newer chips.",
+          "url": "https://example.com/2026-10-08/14",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "Analysts expect more price cuts as capacity comes online."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Lower inference prices make features that were too expensive last year worth another look."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-15",
+          "section": "Industry",
+          "topic": null,
+          "title": "A startup raises money to build tools for evaluating agents",
+          "intro": "The company sells a service that replays agent runs and scores them against checklists.",
+          "url": "https://example.com/2026-10-08/15",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "It joins a crowded field of tracing and evaluation tools."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Tracing is quickly becoming part of the standard stack."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-16",
+          "section": "Everyday",
+          "topic": null,
+          "title": "Meeting notes that actually get used",
+          "intro": "A product team shares how a short summary plus action items beat full transcripts.",
+          "url": "https://example.com/2026-10-08/16",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "They post a three-line summary in the team channel within an hour and link the transcript for anyone who wants details."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Small habits like this turn AI tools into something people keep using."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-08-17",
+          "section": "Everyday",
+          "topic": null,
+          "title": "A calmer way to use AI for study",
+          "intro": "Teachers suggest asking the model to quiz you instead of explaining everything.",
+          "url": "https://example.com/2026-10-08/17",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "Retrieval practice works better than rereading, and a model can generate questions at the right level on demand."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Use the model to test your memory, then check the answers yourself."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2026-10-01",
+      "title": "AI digest: 2026-09-24 to 2026-10-01",
+      "summary": [
+        {
+          "text": "Labs focus on models that know when to abstain.",
+          "url": "https://example.com/reading/d2-abstain"
+        },
+        {
+          "text": "Compact vision models arrive on laptops.",
+          "url": "https://example.com/reading/d2-vision"
+        }
+      ],
+      "reading": [
+        {
+          "text": "The abstention paper, with code.",
+          "url": "https://example.com/reading/d2-paper"
+        }
+      ],
+      "watch": [
+        {
+          "text": "Open-weights releases expected next week.",
+          "url": "https://example.com/reading/d2-open"
+        }
+      ],
+      "stories": [
+        {
+          "id": "2026-10-01-1",
+          "section": "Research",
+          "topic": "New research",
+          "title": "Teaching models to say what they do not know",
+          "intro": "A paper compares three ways to make a model abstain when it is unsure.",
+          "url": "https://example.com/2026-10-01/1",
+          "coreRank": null,
+          "readMinutes": 3,
+          "parts": [
+            {
+              "label": "The question",
+              "text": "Can a model learn when to answer and when to say it does not know?"
+            },
+            {
+              "label": "Result",
+              "text": "Training on examples where abstaining is rewarded cuts confident wrong answers by about a third."
+            },
+            {
+              "label": "Why it matters",
+              "text": "A model that admits uncertainty is easier to trust in a workflow."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-01-2",
+          "section": "Models",
+          "topic": "Launches",
+          "title": "A lab ships a compact vision model",
+          "intro": "The model reads screenshots and charts and runs on a laptop.",
+          "url": "https://example.com/2026-10-01/2",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "It handles tables and handwriting well but struggles with dense diagrams."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Local vision models open up private document workflows."
+            }
+          ]
+        },
+        {
+          "id": "2026-10-01-3",
+          "section": "Everyday",
+          "topic": null,
+          "title": "Writing prompts as checklists",
+          "intro": "A short guide to turning a vague request into a list of checks the model can follow.",
+          "url": "https://example.com/2026-10-01/3",
+          "coreRank": null,
+          "readMinutes": 2,
+          "parts": [
+            {
+              "label": null,
+              "text": "List the inputs, the output format and two examples of what good looks like."
+            },
+            {
+              "label": "Why it matters",
+              "text": "Checklists make results easier to review and to repeat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2026-09-24",
+      "title": "AI digest: 2026-09-17 to 2026-09-24",
+      "summary": [
+        {
+          "text": "A quiet week: mostly incremental releases and a few evaluation papers.",
+          "url": "https://example.com/reading/d3-summary"
+        }
+      ],
+      "reading": [
+        {
+          "text": "A survey of evaluation methods for agents.",
+          "url": "https://example.com/reading/d3-survey"
+        }
+      ],
+      "watch": [
+        {
+          "text": "Voice models are catching up on interruptions.",
+          "url": "https://example.com/reading/d3-voice"
+        }
+      ],
+      "stories": []
+    }
+  ]
+}

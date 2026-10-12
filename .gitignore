@@ -1,0 +1,15 @@
+node_modules
+data/
+state/
+dist/
+prompt.md
+chat-prompt.md
+profile.md
+android/local.properties
+android/.gradle
+android/.kotlin
+android/build
+android/app/build
+*.apk
+*.keystore
+.idea

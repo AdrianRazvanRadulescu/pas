@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Pas</string>
+    <string name="widget_name">Pas: today\'s focus</string>
+    <string name="widget_description">Today\'s focus, this week\'s gym days and your streak.</string>
+</resources>
